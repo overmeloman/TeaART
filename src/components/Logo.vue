@@ -1,11 +1,11 @@
 <script setup lang="ts">
-
+import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-	<a href="http://localhost:5173/">
+	<RouterLink to="/">
 		TeaART
-	</a>
+	</RouterLink>
 </template>
 
 <style scoped>
