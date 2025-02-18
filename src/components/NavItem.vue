@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-const props = defineProps({
+defineProps<{
   name: String,
-	link: String,
-})
+	link: any,
+}>()
 </script>
 
 <template>
