@@ -1,13 +1,9 @@
 <script setup lang="ts">
-interface Props {
-	title?: string,
-	price?: number,
-	image?: string,
-}
+import type { Props } from '@/types/interfaces';
+
 const props = withDefaults(defineProps<Props>(), {
   title: 'defaultTitle',
   price: -1,
-	image: "../images/TeaDefault.jpg",
 })
 </script>
 
