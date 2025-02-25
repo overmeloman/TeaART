@@ -6,6 +6,8 @@ import NavItem from './NavItem.vue'
 <template>
 	<nav class="flex gap-[10px] " >
 		<NavItem name="About" link="/about" />
+
+		<NavItem name="Cart" link="/cart" />
 	</nav>
 </template>
 

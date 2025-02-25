@@ -4,7 +4,7 @@ import Nav from './Nav.vue'
 </script>
 
 <template>
-	<header class="py-[12px] border-b  " >
+	<header class="py-[12px] px-[5px] border-b " >
 		<div class="flex gap-[10px] justify-between " >
 			<Logo />
 			<Nav />

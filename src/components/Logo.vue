@@ -3,7 +3,7 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-	<RouterLink to="/">
+	<RouterLink to="/" class="  ">
 		TeaART
 	</RouterLink>
 </template>

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { ProductProps } from '@/types/interfaces';
-import ButtonToCart from './ButtonToCart.vue';
 
 const props = withDefaults(defineProps<ProductProps>(), {
   title: 'defaultTitle',
@@ -10,16 +9,15 @@ const props = withDefaults(defineProps<ProductProps>(), {
 </script>
 
 <template>
-	<div class=" flex flex-col items-center p-[10px] flex-[0_0_24%] border border-black/30 gap-[10px] ">
-		<img src="../images/TeaDefault.jpg" alt="(image)">
-		<div class=" text-[14px] text-center font-[400] min-h-[42px] box-content ">
+	<div class=" flex items-center p-[10px] border border-black/30 gap-[15px] ">
+		<img src="../images/TeaDefault.jpg" alt="(image)" class=" w-[60px] h-[60px] ">
+		<div class=" text-[14px] text-center font-[400] flex-[1_0_150px] ">
 			{{ title }}
 		</div>
 		<div class=" text-[15px] text-center font-[500] ">
 			{{ price }} $
 		</div>
 		
-		<ButtonToCart :id="id"/>
 	</div>
 </template>
 

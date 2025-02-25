@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import type { Props } from '@/types/interfaces';
+import type { ProductProps } from '@/types/interfaces';
 import ProductCard from './ProductCard.vue'
 
-const productsData: Array<Props> = reactive([])
-fetch('https://api.escuelajs.co/api/v1/products?offset=0&limit=20')
+const productsData: Array<ProductProps> = reactive([])
+fetch('https://api.escuelajs.co/api/v1/products?offset=0&limit=19')
 	.then(response => response.json())
 	.then(data => data.forEach(
-		(obj: Props) => productsData.push(Object.assign({}, obj))
+		(obj: ProductProps) => productsData.push(Object.assign({}, obj))
 	));
 
 </script>
@@ -18,7 +18,8 @@ fetch('https://api.escuelajs.co/api/v1/products?offset=0&limit=20')
 			v-for="product in productsData"
 			:title="product.title"
 			:price="product.price"
-			>
+			:id="product.id"
+		>
 		</ProductCard>
 	</div>
 </template>

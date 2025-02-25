@@ -1,2 +1,7 @@
 @import './base.css';
 @import "tailwindcss";
+
+@theme {
+	--color-green: rgb(70, 140, 37);
+	--color-darkgreen: rgb(53, 117, 23);
+}

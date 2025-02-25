@@ -1,12 +1,11 @@
 <script setup lang="ts">
-defineProps<{
-  name: String,
-}>()
+import Cart from '@/components/Cart.vue';
+
 </script>
 
 <template>
-	<div>
-		{{ name }}
+	<div class="flex py-[12px] ">
+		<Cart />
 	</div>
 </template>
 

@@ -1,4 +1,5 @@
-export interface Props {
+export interface ProductProps {
 	title?: string,
 	price?: number,
+	id?: number,
 }
