@@ -5,7 +5,7 @@ import CartItem from './CartItem.vue';
 
 const productsData: Array<ProductProps> = reactive([]);
 
-fetch('https://api.escuelajs.co/api/v1/products?offset=0&limit=3')
+fetch('https://api.escuelajs.co/api/v1/products?offset=0&limit=5')
 	.then(response => response.json())
 	.then(data => data.forEach(
 		(obj: ProductProps) => productsData.push(Object.assign({}, obj))

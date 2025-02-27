@@ -3,3 +3,8 @@ export interface ProductProps {
 	price?: number,
 	id?: number,
 }
+
+export interface CategorieProps {
+	id?: number,
+	name?: string,
+}

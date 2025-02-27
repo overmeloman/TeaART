@@ -8,7 +8,8 @@ const props = withDefaults(defineProps<{
 
 <template>
 	<button class=" bg-green hover:bg-darkgreen rounded-[5px] text-white text-[15px] text-center font-[400] py-[10px] px-[15px] w-[100%] cursor-pointer ">
-		To cart (id{{ id }})
+		<span class="text-[12px]">id{{ id }}</span>
+		To cart
 	</button>
 </template>
 
