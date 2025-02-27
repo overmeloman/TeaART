@@ -1,21 +1,15 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
-	<footer class="py-[12px] border-t  " >
-		<div class="flex gap-[10px] justify-between " >
-			<div>
-				<p>
-					Drink good tea and feel good!
-				</p>
-				<p>
-					© 2012–2024 TeaART
-				</p>
-			</div>
-		</div>
-	</footer>
+  <footer class="py-[12px] border-t">
+    <div class="flex gap-[10px] justify-between">
+      <!-- TODO: justify-between between what?) you have one div -->
+      <div>
+        <p>Drink good tea and feel good!</p>
+        <p>© 2012–2024 TeaART</p>
+      </div>
+    </div>
+  </footer>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
