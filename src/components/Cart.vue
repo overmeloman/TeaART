@@ -1,35 +1,25 @@
 <script setup lang="ts">
-import { reactive, ref } from "vue";
+import { reactive } from "vue";
+import CartItem from "@/components/CartItem.vue";
 import type { ProductProps } from "@/types/interfaces";
-import CartItem from "./CartItem.vue";
+import { getProducts } from "@/queries/queries";
 
 const productsData: Array<ProductProps> = reactive([]);
 
-fetch("https://api.escuelajs.co/api/v1/products?offset=0&limit=5")
-  .then((response) => response.json())
-  .then((data) =>
-    data.forEach((obj: ProductProps) =>
-      productsData.push(Object.assign({}, obj))
-    )
-  );
-
-// const AddedToCartIDs: Array<number> = reactive([17, 18, 19, 20]);
-// // синхронность?????
-// AddedToCartIDs.forEach((id: number) => {
-// 	fetch('https://api.escuelajs.co/api/v1/products/' + id)
-// 		.then(response => response.json())
-// 		.then((data: ProductProps) => productsData.push(Object.assign({}, data))
-// 	);
-// });
+getProducts(0, 5, 0).then((data: Array<ProductProps>) =>
+  data.forEach((obj: ProductProps) => productsData.push(obj))
+);
 </script>
 
 <template>
-  <div class="flex flex-col gap-[5px] px-[15px] flex-[0_0_70%] border-r">
+  <div class="flex flex-col gap-[5px] pr-[15px] flex-[0_0_70%] border-r">
     <CartItem
       v-for="product in productsData"
+      :key="product.id"
       :title="product.title"
       :price="product.price"
       :id="product.id"
+      :images="product.images"
     >
     </CartItem>
   </div>

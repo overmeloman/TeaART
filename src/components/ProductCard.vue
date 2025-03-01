@@ -1,25 +1,34 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import type { ProductProps } from "@/types/interfaces";
-import ButtonToCart from "./ButtonToCart.vue";
+import ButtonToCart from "@/components/buttons/ButtonToCart.vue";
 
-const props = withDefaults(defineProps<ProductProps>(), {
-  title: "defaultTitle",
-  price: -1,
-  id: 0,
-});
+const props = defineProps<ProductProps>();
+
+const imageLoaded = ref(false);
+const onImageLoad = () => (imageLoaded.value = true);
 </script>
 
 <template>
   <div
-    class="flex flex-col items-center p-[10px] flex-[0_0_24%] border border-black/30 gap-[10px]"
+    class="flex flex-col items-center p-[10px] border border-black/30 rounded-[5px] gap-[10px]"
   >
-    <!-- TODO: add unique alt for images -->
-    <img src="../images/TeaDefault.jpg" alt="(image)" />
-    <div class="text-[14px] text-center font-[400] min-h-[42px] box-content">
-      <!-- TODO: props.title/props.price -->
-      {{ title }}
+    <div class="w-full h-[200px]">
+      <img
+        v-if="props.images[0]"
+        @load="onImageLoad"
+        :src="props.images[0]"
+        alt="productImage"
+        class="object-cover opacity-0 transition-all duration-300 w-full h-full"
+        :class="{ 'opacity-100': imageLoaded }"
+      />
     </div>
-    <div class="text-[15px] text-center font-[500]">{{ price }} $</div>
+    <div
+      class="text-[14px] text-center font-[400] min-h-[63px] box-content w-full"
+    >
+      {{ props.title }}
+    </div>
+    <div class="text-[15px] text-center font-[500]">{{ props.price }} $</div>
 
     <ButtonToCart :id="id" />
   </div>

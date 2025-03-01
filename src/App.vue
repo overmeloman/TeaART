@@ -1,16 +1,12 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
-import Header from "./components/Header.vue";
-import Footer from "./components/Footer.vue";
+import { RouterView } from "vue-router";
+import LayoutMain from "@/components/layout/LayoutMain.vue";
 </script>
 
 <template>
-  <!-- TODO: add layout with header footer and <slot/> inside -->
-  <div class="w-[1160px] mx-auto">
-    <Header />
+  <LayoutMain>
     <RouterView />
-    <Footer />
-  </div>
+  </LayoutMain>
 </template>
 
 <style scoped></style>

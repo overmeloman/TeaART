@@ -3,7 +3,6 @@
 <template>
   <footer class="py-[12px] border-t">
     <div class="flex gap-[10px] justify-between">
-      <!-- TODO: justify-between between what?) you have one div -->
       <div>
         <p>Drink good tea and feel good!</p>
         <p>© 2012–2024 TeaART</p>

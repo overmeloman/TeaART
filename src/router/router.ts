@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
-// TODO: add absolute path like: import AboutView from '@/views/AboutView.vue'
-//TODO: import all components like HomeView, it's a good practice
-import HomeView from "../views/HomeView.vue";
+
+import HomeView from "@/views/HomeView.vue";
+import AboutView from "@/views/AboutView.vue";
+import CartView from "@/views/CartView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,12 +15,12 @@ const router = createRouter({
     {
       path: "/about",
       name: "about",
-      component: () => import("../views/AboutView.vue"),
+      component: AboutView,
     },
     {
       path: "/cart",
       name: "cart",
-      component: () => import("../views/CartView.vue"),
+      component: CartView,
     },
   ],
 });

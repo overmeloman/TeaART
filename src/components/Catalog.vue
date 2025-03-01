@@ -1,57 +1,38 @@
 <script setup lang="ts">
-import { reactive, ref } from "vue";
-import type { CategorieProps } from "@/types/interfaces";
-import CatalogItem from "./CatalogItem.vue";
+import { ref, reactive } from "vue";
+import CatalogItem from "@/components/CatalogItem.vue";
+import type { CategoryProps } from "@/types/interfaces";
+import { getCategories } from "@/queries/queries";
 
-const categoryID = defineModel();
+const currentCategoryId = ref(0);
 
-//TODO: use () => {} functions
-function changeCategory(id: number) {
-  categoryID.value = id;
-}
+const changeCategory = (id: number) => {
+  currentCategoryId.value = id;
+};
 
-//TODO: add folder with all queries
-//
-// 'https://api.escuelajs.co/api/v1/' it's a base url
-// const BASE_URL = "https://api.escuelajs.co/api/v1/";
-//
-// use async/await construction
-//
-// write queries:
-// const getSmth = async (offset: number, limit: number) => {
-//   const res = await fetch(
-//     `${BASE_URL}products?offset=${offset}&limit=${limit}`
-//   );
-//   return res;
-// };
-//
-// and import query in your component
+const categoriesData: Array<CategoryProps> = reactive([]);
 
-const categoriesData: Array<CategorieProps> = reactive([]);
-fetch("https://api.escuelajs.co/api/v1/categories?limit=5")
-  .then((response) => response.json())
-  .then((data) =>
-    data.forEach((obj: CategorieProps) =>
-      categoriesData.push(Object.assign({}, obj))
-    )
-  );
-// TODO: add this component as navbar in layout
-//TODO: aks me about slots
+getCategories(0, 5).then((data: Array<CategoryProps>) =>
+  data.forEach((obj: CategoryProps) => categoriesData.push(obj))
+);
 </script>
 
 <template>
-  <div class="flex flex-col gap-[5px] pr-[15px] border-r flex-[0_0_15%]">
-    <div>
-      {{ categoryID }}
+  <div class="flex py-[15px] min-h-screen">
+    <div class="flex flex-col gap-[5px] pr-[15px] border-r flex-[0_0_15%]">
+      <div>
+        {{ currentCategoryId }}
+      </div>
+      <CatalogItem
+        @change-category="(id) => changeCategory(id)"
+        v-for="category in categoriesData"
+        :key="category.id"
+        :id="category.id"
+        :name="category.name"
+      />
     </div>
-    <!-- TODO: when use v-for add unique key :key="category.id" -->
-    <CatalogItem
-      @change-category="(id) => changeCategory(id)"
-      v-for="category in categoriesData"
-      :id="category.id"
-      :name="category.name"
-    >
-    </CatalogItem>
+
+    <slot :currentCategoryId="currentCategoryId" />
   </div>
 </template>
 
