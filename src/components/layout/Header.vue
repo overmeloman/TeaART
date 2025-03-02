@@ -6,7 +6,7 @@ import NavLink from "@/components/NavLink.vue";
 <template>
   <header class="py-[12px] px-[5px] border-b">
     <div class="flex gap-[10px] justify-between">
-      <RouterLink to="/" class="  "> TeaART </RouterLink>
+      <RouterLink to="/" class="text-[15px] font-[500]"> TeaART </RouterLink>
       <nav class="flex gap-[10px]">
         <NavLink name="About" link="/about" />
         <NavLink name="Cart" link="/cart" />

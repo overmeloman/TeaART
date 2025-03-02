@@ -8,7 +8,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <RouterLink :to="link">
+  <RouterLink :to="link" class="text-[15px] font-[500]">
     {{ props.name }}
   </RouterLink>
 </template>

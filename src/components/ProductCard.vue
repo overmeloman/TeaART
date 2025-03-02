@@ -19,7 +19,7 @@ const onImageLoad = () => (imageLoaded.value = true);
         @load="onImageLoad"
         :src="props.images[0]"
         alt="productImage"
-        class="object-cover opacity-0 transition-all duration-300 w-full h-full"
+        class="object-cover opacity-0 transition-all duration-300 w-full h-full border border-black/70 rounded-[5px]"
         :class="{ 'opacity-100': imageLoaded }"
       />
     </div>
