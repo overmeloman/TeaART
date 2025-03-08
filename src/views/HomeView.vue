@@ -4,11 +4,12 @@ import Products from "@/components/Products.vue";
 </script>
 
 <template>
-  <div class="min-h-screen">
-    <Catalog v-slot="{ currentCategoryId }">
-      <Products :currentCategoryId="currentCategoryId" />
-    </Catalog>
-  </div>
+  <Catalog v-slot="{ currentCategoryId, currentPage }">
+    <Products
+      :currentCategoryId="currentCategoryId"
+      :currentPage="currentPage"
+    />
+  </Catalog>
 </template>
 
 <style scoped></style>

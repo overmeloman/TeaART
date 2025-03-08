@@ -6,7 +6,11 @@ import Footer from "@/components/layout/Footer.vue";
 <template>
   <div class="w-[1160px] mx-auto">
     <Header />
-    <slot></slot>
+    <!-- checkme -->
+    <!-- dynamic height, min-height = viewport-header-footer -->
+    <div class="min-h-[calc(100vh-110px)]">
+      <slot></slot>
+    </div>
     <Footer />
   </div>
 </template>

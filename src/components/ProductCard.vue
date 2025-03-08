@@ -11,7 +11,7 @@ const onImageLoad = () => (imageLoaded.value = true);
 
 <template>
   <div
-    class="flex flex-col items-center p-[10px] border border-black/30 rounded-[5px] gap-[10px]"
+    class="flex flex-col items-center p-[10px] border border-black/30 rounded-[5px] gap-[10px] h-min"
   >
     <div class="w-full h-[200px]">
       <img

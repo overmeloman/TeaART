@@ -1,29 +1,41 @@
 <script setup lang="ts">
-import { reactive, computed, watch } from "vue";
+import { ref, reactive, computed, watch } from "vue";
 import ProductCard from "@/components/ProductCard.vue";
 import type { ProductProps } from "@/types/interfaces";
 import { getProducts } from "@/queries/queries";
 
 const props = defineProps<{
   currentCategoryId: number;
+  currentPage: number;
 }>();
 
 const productsData: Array<ProductProps> = reactive([]);
 
 watch(
   () => props.currentCategoryId,
-  async (newId) => {
+  async (newCategoryId) => {
     productsData.length = 0;
-    getProducts(0, 20, newId).then((data: Array<ProductProps>) =>
+    getProducts(0, 20, newCategoryId).then((data: Array<ProductProps>) =>
       data.forEach((obj: ProductProps) => productsData.push(obj))
     );
   },
   { immediate: true }
 );
+
+watch(
+  () => props.currentPage,
+  async (newPageId) => {
+    productsData.length = 0;
+    getProducts((newPageId - 1) * 20, 20, props.currentCategoryId).then(
+      (data: Array<ProductProps>) =>
+        data.forEach((obj: ProductProps) => productsData.push(obj))
+    );
+  }
+);
 </script>
 
 <template>
-  <div class="grid grid-cols-4 gap-[5px] px-[15px] flex-[0_0_85%]">
+  <div class="grid grid-cols-4 gap-[5px]">
     <ProductCard
       v-for="product in productsData"
       :key="product.id"

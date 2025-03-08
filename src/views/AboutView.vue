@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="min-h-screen py-[12px]">
+  <div class="py-[15px]">
     <p>Information</p>
   </div>
 </template>

@@ -12,16 +12,18 @@ getProducts(0, 5, 0).then((data: Array<ProductProps>) =>
 </script>
 
 <template>
-  <div class="flex flex-col gap-[5px] pr-[15px] flex-[0_0_70%] border-r">
-    <CartItem
-      v-for="product in productsData"
-      :key="product.id"
-      :title="product.title"
-      :price="product.price"
-      :id="product.id"
-      :images="product.images"
-    >
-    </CartItem>
+  <div class="py-[15px] flex">
+    <div class="flex flex-col gap-[5px] pr-[15px] flex-[0_0_70%] border-r">
+      <CartItem
+        v-for="product in productsData"
+        :key="product.id"
+        :title="product.title"
+        :price="product.price"
+        :id="product.id"
+        :images="product.images"
+      >
+      </CartItem>
+    </div>
   </div>
 </template>
 
