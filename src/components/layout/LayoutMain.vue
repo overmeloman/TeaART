@@ -4,6 +4,7 @@ import Footer from "@/components/layout/Footer.vue";
 </script>
 
 <template>
+  <!-- Max-width(flexible) -->
   <div class="w-[1160px] mx-auto">
     <Header />
     <!-- checkme -->

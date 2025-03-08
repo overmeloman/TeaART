@@ -32,6 +32,7 @@ watch(
     );
   }
 );
+//TODO: why pagination isn't here
 </script>
 
 <template>

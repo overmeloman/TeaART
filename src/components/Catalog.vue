@@ -19,15 +19,18 @@ const changePage = (id: number) => {
   currentPage.value = id;
 };
 
+//TODO: async/await
 getCategories(0, 5).then((data: Array<CategoryProps>) =>
   data.forEach((obj: CategoryProps) => categoriesData.push(obj))
 );
 
+//TODO: watchEffect?
 watch(
   currentCategoryId,
   async (newCategoryId) => {
     pages.length = 0;
     currentPage.value = 1;
+    //??????
     getPagesNumber(newCategoryId).then((pagesNumber: number) => {
       for (let i = 1; i <= pagesNumber; i++) {
         pages.push(i);
@@ -41,6 +44,7 @@ watch(
 <template>
   <div class="flex py-[15px]">
     <div class="flex flex-col gap-[5px] pr-[15px] border-r flex-[0_0_15%]">
+      <!-- TODO: handle reset -->
       <button
         type="reset"
         @click="changeCategory(0), changePage(1)"

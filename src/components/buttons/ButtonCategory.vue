@@ -6,6 +6,8 @@ const props = defineProps<CategoryProps>();
 const emits = defineEmits<{
   changeCategory: [id: number];
 }>();
+
+//Add one base batton, add styles as props
 </script>
 
 <template>

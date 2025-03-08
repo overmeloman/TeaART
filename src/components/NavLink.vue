@@ -5,6 +5,7 @@ const props = defineProps<{
   name: string;
   link: string;
 }>();
+//TODO: add to base components
 </script>
 
 <template>

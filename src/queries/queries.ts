@@ -3,6 +3,7 @@ const BASE_URL = "https://api.escuelajs.co/api/v1/";
 // checkme
 // two ways to get link, which is better?
 
+//TODO: add params as an object, ask why
 export const getCategories = async (offset: number, limit: number) => {
   // 1st
   const link = () => {

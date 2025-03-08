@@ -22,6 +22,7 @@ const onImageLoad = () => (imageLoaded.value = true);
         :class="{ 'opacity-100': imageLoaded }"
       />
     </div>
+    <!-- TODO: define text style in base css file -->
     <div class="text-[14px] text-center font-[400] flex-[1_0_150px]">
       {{ props.title }}
     </div>
