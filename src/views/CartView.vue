@@ -1,14 +1,9 @@
 <script setup lang="ts">
-import Cart from '@/components/Cart.vue';
-
+import Cart from "@/components/Cart.vue";
 </script>
 
 <template>
-	<div class="flex py-[12px] ">
-		<Cart />
-	</div>
+  <Cart />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

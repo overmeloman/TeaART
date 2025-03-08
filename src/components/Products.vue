@@ -1,44 +1,48 @@
 <script setup lang="ts">
-import { reactive, ref, computed, inject, watch } from "vue";
+import { ref, reactive, computed, watch } from "vue";
+import ProductCard from "@/components/ProductCard.vue";
 import type { ProductProps } from "@/types/interfaces";
-import ProductCard from "./ProductCard.vue";
+import { getProducts } from "@/queries/queries";
 
-const categoryID = defineModel();
-
-const productsLink = computed(() => {
-  if (categoryID.value > 0)
-    return (
-      "https://api.escuelajs.co/api/v1/products/?categoryId=" +
-      categoryID.value +
-      "&limit=20"
-    );
-  return "https://api.escuelajs.co/api/v1/products?offset=0&limit=20";
-});
+const props = defineProps<{
+  currentCategoryId: number;
+  currentPage: number;
+}>();
 
 const productsData: Array<ProductProps> = reactive([]);
+
 watch(
-  productsLink,
-  async (newLink) => {
+  () => props.currentCategoryId,
+  async (newCategoryId) => {
     productsData.length = 0;
-    fetch(newLink)
-      .then((response) => response.json())
-      .then((data) =>
-        data.forEach((obj: ProductProps) =>
-          productsData.push(Object.assign({}, obj))
-        )
-      );
+    getProducts(0, 20, newCategoryId).then((data: Array<ProductProps>) =>
+      data.forEach((obj: ProductProps) => productsData.push(obj))
+    );
   },
   { immediate: true }
+);
+
+watch(
+  () => props.currentPage,
+  async (newPageId) => {
+    productsData.length = 0;
+    getProducts((newPageId - 1) * 20, 20, props.currentCategoryId).then(
+      (data: Array<ProductProps>) =>
+        data.forEach((obj: ProductProps) => productsData.push(obj))
+    );
+  }
 );
 </script>
 
 <template>
-  <div class="flex gap-[5px] pl-[15px] flex-wrap flex-[0_0_85%]">
+  <div class="grid grid-cols-4 gap-[5px]">
     <ProductCard
       v-for="product in productsData"
+      :key="product.id"
       :title="product.title"
       :price="product.price"
       :id="product.id"
+      :images="product.images"
     >
     </ProductCard>
   </div>

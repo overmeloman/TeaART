@@ -1,12 +1,9 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
-	<p>
-		Information
-	</p>
+  <div class="py-[15px]">
+    <p>Information</p>
+  </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

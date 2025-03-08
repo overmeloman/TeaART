@@ -1,16 +1,15 @@
 <script setup lang="ts">
-import { ref, provide } from "vue";
-import Catalog from "../components/Catalog.vue";
-import Products from "../components/Products.vue";
-
-const categoryID = ref(0);
+import Catalog from "@/components/Catalog.vue";
+import Products from "@/components/Products.vue";
 </script>
 
 <template>
-  <div class="flex py-[12px]">
-    <Catalog v-model="categoryID" />
-    <Products v-model="categoryID" />
-  </div>
+  <Catalog v-slot="{ currentCategoryId, currentPage }">
+    <Products
+      :currentCategoryId="currentCategoryId"
+      :currentPage="currentPage"
+    />
+  </Catalog>
 </template>
 
 <style scoped></style>
