@@ -14,7 +14,7 @@ const emits = defineEmits<{
   <button
     type="button"
     @click="emits('changeCategory', props.id)"
-    class="py-[5px] px-[10px] text-green hover:bg-gray text-left text-[15px] font-[500] cursor-pointer rounded-[5px]"
+    class="py-[5px] px-[10px] text-green hover:bg-gray text-15-500 text-left cursor-pointer rounded-[5px]"
   >
     <!-- <span class="text-[12px]">id{{ props.id }}</span> -->
     {{ props.name }}

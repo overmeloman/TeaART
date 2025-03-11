@@ -9,14 +9,14 @@ const props = defineProps<{
   currentPage: number;
 }>();
 
-const productsData: Array<ProductProps> = reactive([]);
+const productsData: ProductProps[] = reactive([]);
 
 watch(
   () => props.currentCategoryId,
   async (newCategoryId) => {
     productsData.length = 0;
-    getProducts(0, 20, newCategoryId).then((data: Array<ProductProps>) =>
-      data.forEach((obj: ProductProps) => productsData.push(obj))
+    getProducts({ offset: 0, limit: 20, categoryId: newCategoryId }).then(
+      (data) => data.forEach((obj) => productsData.push(obj))
     );
   },
   { immediate: true }
@@ -26,13 +26,13 @@ watch(
   () => props.currentPage,
   async (newPageId) => {
     productsData.length = 0;
-    getProducts((newPageId - 1) * 20, 20, props.currentCategoryId).then(
-      (data: Array<ProductProps>) =>
-        data.forEach((obj: ProductProps) => productsData.push(obj))
-    );
+    getProducts({
+      offset: (newPageId - 1) * 20,
+      limit: 20,
+      categoryId: props.currentCategoryId,
+    }).then((data) => data.forEach((obj) => productsData.push(obj)));
   }
 );
-//TODO: why pagination isn't here
 </script>
 
 <template>

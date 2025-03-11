@@ -4,14 +4,11 @@ import Footer from "@/components/layout/Footer.vue";
 </script>
 
 <template>
-  <!-- Max-width(flexible) -->
-  <div class="w-[1160px] mx-auto">
+  <div class="max-w-[1160px] w-full mx-auto min-h-[100vh] flex flex-col">
     <Header />
-    <!-- checkme -->
-    <!-- dynamic height, min-height = viewport-header-footer -->
-    <div class="min-h-[calc(100vh-110px)]">
+    <main class="h-full flex-grow">
       <slot></slot>
-    </div>
+    </main>
     <Footer />
   </div>
 </template>
