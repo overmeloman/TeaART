@@ -7,7 +7,7 @@ const emits = defineEmits<{
   changeCategory: [id: number];
 }>();
 
-//Add one base batton, add styles as props
+// TODO add one base batton, add styles as props
 </script>
 
 <template>

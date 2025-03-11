@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, reactive, watch } from "vue";
-import ButtonCategory from "@/components/buttons/ButtonCategory.vue";
-import ButtonPage from "@/components/buttons/ButtonPage.vue";
+import Button from "@/components/base/Button.vue";
 import type { CategoryProps } from "@/types/interfaces";
 import { getCategories } from "@/queries/queries";
 import { getPagesNumber } from "@/queries/queries";
@@ -45,32 +44,40 @@ watch(
 <template>
   <div class="flex py-[15px]">
     <div class="flex flex-col gap-[5px] pr-[15px] border-r flex-[0_0_15%]">
-      <button
-        type="reset"
+      <Button
+        :id="0"
+        :title="'RESET'"
+        :type="'reset'"
         @click="reset()"
-        class="py-[5px] px-[10px] hover:bg-gray rounded-[5px] text-15-500 text-center cursor-pointer"
-      >
-        RESET
-      </button>
-      <ButtonCategory
+        :styles="'py-[5px] px-[10px] hover:bg-gray rounded-[5px] text-15-500 text-center cursor-pointer'"
+      />
+
+      <Button
         v-for="category in categoriesData"
         :key="category.id"
         :id="category.id"
-        :name="category.name"
-        @change-category="(id) => changeCategory(id)"
+        :title="category.name"
+        :type="'button'"
+        @click="changeCategory(category.id)"
+        :styles="'py-[5px] px-[10px] text-green hover:bg-gray text-15-500 text-left cursor-pointer rounded-[5px]'"
         :class="{ 'bg-lightgray': category.id == currentCategoryId }"
       />
     </div>
 
     <div class="flex-[0_0_85%] px-[15px] flex flex-col gap-[15px]">
       <slot :currentCategoryId="currentCategoryId" :currentPage="currentPage" />
+
       <div class="flex gap-[5px] justify-center">
-        <ButtonPage
+        <Button
           v-for="pageId in pagesNumber"
           :key="pageId"
-          :pageId="pageId"
-          @change-page="(pageId) => changePage(pageId)"
-        ></ButtonPage>
+          :id="pageId"
+          :title="`${pageId}`"
+          :type="'button'"
+          @click="changePage(pageId)"
+          :styles="'hover:bg-gray text-15-400 text-center py-[5px] px-[15px] cursor-pointer border border-black/70 rounded-[5px]'"
+          :class="{ 'bg-lightgray': pageId == currentPage }"
+        />
       </div>
     </div>
   </div>

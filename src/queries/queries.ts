@@ -39,6 +39,6 @@ export const getPagesNumber = async (categoryId: number) => {
   let pagesNumber = 1;
   const response = await fetch(link());
   const data = await response.json();
-  pagesNumber = Math.floor(data.length / 20) + 1;
+  pagesNumber = Math.floor((data.length - 1) / 20) + 1;
   return pagesNumber;
 };
