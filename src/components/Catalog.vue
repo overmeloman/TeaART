@@ -43,7 +43,7 @@ watch(
 
 <template>
   <div class="flex py-[15px]">
-    <div class="flex flex-col gap-[5px] pr-[15px] border-r flex-[0_0_15%]">
+    <div class="flex flex-col gap-[5px] pr-[15px] border-r flex-[1_0]">
       <Button
         :id="0"
         :title="'RESET'"
@@ -64,7 +64,7 @@ watch(
       />
     </div>
 
-    <div class="flex-[0_0_85%] px-[15px] flex flex-col gap-[15px]">
+    <div class="flex-[5_0] px-[15px] flex flex-col gap-[15px]">
       <slot :currentCategoryId="currentCategoryId" :currentPage="currentPage" />
 
       <div class="flex gap-[5px] justify-center">
