@@ -11,3 +11,7 @@
 .text-15-500 {
   @apply text-[15px] font-[500];
 }
+
+.text-25-700 {
+  @apply text-[25px] font-[700];
+}

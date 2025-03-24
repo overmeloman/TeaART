@@ -2,18 +2,11 @@ import type { ProductProps, CategoryProps } from "@/types/interfaces";
 
 const BASE_URL = "https://api.escuelajs.co/api/v1/";
 
-export const getCategories = async (params: {
-  offset: number;
-  limit: number;
-}) => {
-  const link = () => {
-    if (params.limit > 0)
-      return `${BASE_URL}categories?offset=${params.offset}&limit=${params.limit}`;
-    return `${BASE_URL}categories`;
-  };
-  const response = await fetch(link());
+export const getProduct = async (params: { productId: number }) => {
+  const link = `${BASE_URL}products/${params.productId}`;
+  const response = await fetch(link);
   const data = await response.json();
-  return data as unknown as CategoryProps[];
+  return data as unknown as ProductProps;
 };
 
 export const getProducts = async (params: {
@@ -29,6 +22,20 @@ export const getProducts = async (params: {
   const response = await fetch(link());
   const data = await response.json();
   return data as unknown as ProductProps[];
+};
+
+export const getCategories = async (params: {
+  offset: number;
+  limit: number;
+}) => {
+  const link = () => {
+    if (params.limit > 0)
+      return `${BASE_URL}categories?offset=${params.offset}&limit=${params.limit}`;
+    return `${BASE_URL}categories`;
+  };
+  const response = await fetch(link());
+  const data = await response.json();
+  return data as unknown as CategoryProps[];
 };
 
 export const getPagesNumber = async (categoryId: number) => {

@@ -3,12 +3,11 @@ const props = defineProps<{
   id: number;
   title: string;
   type: "submit" | "reset" | "button";
-  styles?: string;
 }>();
 </script>
 
 <template>
-  <button :type="props.type" :class="props.styles">
+  <button :type="props.type">
     {{ props.title }}
   </button>
 </template>

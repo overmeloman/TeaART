@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import type { ProductProps } from "@/types/interfaces";
 import Button from "@/components/base/Button.vue";
+import { RouterLink } from "vue-router";
 
 const props = defineProps<ProductProps>();
 
@@ -22,17 +23,32 @@ const onImageLoad = () => (imageLoaded.value = true);
         class="object-cover opacity-0 transition-all duration-300 w-full h-full rounded-[5px]"
         :class="{ 'opacity-100': imageLoaded }"
       />
+      <img
+        v-else
+        @load="onImageLoad"
+        :src="'@/images/imgPlaceHolder.jpg'"
+        alt="productImagePlaceHolder"
+        class="object-cover opacity-0 transition-all duration-300 w-full h-full rounded-[5px]"
+        :class="{ 'opacity-100': imageLoaded }"
+      />
     </div>
-    <div class="text-14-400 text-center min-h-[63px] box-content w-full">
-      {{ props.title }}
+
+    <div class="min-h-[73px]">
+      <RouterLink
+        :to="{ path: '/products/' + props.id }"
+        class="text-14-400 text-center box-content w-full py-[5px]"
+      >
+        {{ props.title }}
+      </RouterLink>
     </div>
+
     <div class="text-15-500 text-center">{{ props.price }} $</div>
 
     <Button
       :id="props.id"
       :title="'To Cart'"
       :type="'button'"
-      :styles="'bg-green hover:bg-darkgreen rounded-[5px] text-15-400 text-center text-white py-[10px] px-[15px] w-[100%] cursor-pointer'"
+      class="bg-green hover:bg-darkgreen rounded-[5px] text-15-400 text-center text-white py-[10px] px-[15px] w-[100%] cursor-pointer"
     />
   </div>
 </template>

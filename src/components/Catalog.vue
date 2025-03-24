@@ -45,11 +45,12 @@ watch(
   <div class="flex py-[15px]">
     <div class="flex flex-col gap-[5px] pr-[15px] border-r flex-[1_0]">
       <Button
+        v-if="categoriesData.length > 0"
         :id="0"
         :title="'RESET'"
         :type="'reset'"
         @click="reset()"
-        :styles="'py-[5px] px-[10px] hover:bg-gray rounded-[5px] text-15-500 text-center cursor-pointer'"
+        class="py-[5px] px-[10px] hover:bg-gray rounded-[5px] text-15-500 text-center cursor-pointer"
       />
 
       <Button
@@ -59,7 +60,7 @@ watch(
         :title="category.name"
         :type="'button'"
         @click="changeCategory(category.id)"
-        :styles="'py-[5px] px-[10px] text-green hover:bg-gray text-15-500 text-left cursor-pointer rounded-[5px]'"
+        class="py-[5px] px-[10px] text-green hover:bg-gray text-15-500 text-left cursor-pointer rounded-[5px]"
         :class="{ 'bg-lightgray': category.id == currentCategoryId }"
       />
     </div>
@@ -67,7 +68,15 @@ watch(
     <div class="flex-[5_0] px-[15px] flex flex-col gap-[15px]">
       <slot :currentCategoryId="currentCategoryId" :currentPage="currentPage" />
 
-      <div class="flex gap-[5px] justify-center">
+      <div v-if="pagesNumber > 1" class="flex gap-[5px] justify-center">
+        <Button
+          v-if="currentPage != 1"
+          :id="0"
+          :title="'<-'"
+          :type="'button'"
+          @click="changePage(currentPage - 1)"
+          class="hover:bg-gray text-15-400 text-center py-[5px] px-[15px] cursor-pointer border border-black/70 rounded-[5px]"
+        />
         <Button
           v-for="pageId in pagesNumber"
           :key="pageId"
@@ -75,8 +84,16 @@ watch(
           :title="`${pageId}`"
           :type="'button'"
           @click="changePage(pageId)"
-          :styles="'hover:bg-gray text-15-400 text-center py-[5px] px-[15px] cursor-pointer border border-black/70 rounded-[5px]'"
+          class="hover:bg-gray text-15-400 text-center py-[5px] px-[15px] cursor-pointer border border-black/70 rounded-[5px]"
           :class="{ 'bg-lightgray': pageId == currentPage }"
+        />
+        <Button
+          v-if="currentPage != pagesNumber"
+          :id="pagesNumber + 1"
+          :title="'->'"
+          :type="'button'"
+          @click="changePage(currentPage + 1)"
+          class="hover:bg-gray text-15-400 text-center py-[5px] px-[15px] cursor-pointer border border-black/70 rounded-[5px]"
         />
       </div>
     </div>
