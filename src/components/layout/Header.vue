@@ -12,6 +12,7 @@ import NavLink from "@/components/base/NavLink.vue";
       <nav class="flex gap-[10px] items-center">
         <NavLink name="About" link="/about" />
         <NavLink name="Cart" link="/cart" />
+        <NavLink name="Profile" link="/profile" />
       </nav>
     </div>
   </header>

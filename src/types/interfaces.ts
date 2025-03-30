@@ -1,6 +1,7 @@
 export interface ProductProps {
   title: string;
   price: number;
+  description: string;
   id: number;
   images: string[];
 }
