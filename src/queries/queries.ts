@@ -1,35 +1,41 @@
+import type { ProductProps, CategoryProps } from "@/types/interfaces";
+
 const BASE_URL = "https://api.escuelajs.co/api/v1/";
 
-// checkme
-// two ways to get link, which is better?
+export const getProduct = async (params: { productId: number }) => {
+  const link = `${BASE_URL}products/${params.productId}`;
+  const response = await fetch(link);
+  const data = await response.json();
+  return data as unknown as ProductProps;
+};
 
-export const getCategories = async (offset: number, limit: number) => {
-  // 1st
+export const getProducts = async (params: {
+  offset: number;
+  limit: number;
+  categoryId: number;
+}) => {
   const link = () => {
-    if (limit > 0)
-      return `${BASE_URL}categories?offset=${offset}&limit=${limit}`;
+    if (params.categoryId > 0)
+      return `${BASE_URL}products/?categoryId=${params.categoryId}&offset=${params.offset}&limit=${params.limit}`;
+    return `${BASE_URL}products?offset=${params.offset}&limit=${params.limit}`;
+  };
+  const response = await fetch(link());
+  const data = await response.json();
+  return data as unknown as ProductProps[];
+};
+
+export const getCategories = async (params: {
+  offset: number;
+  limit: number;
+}) => {
+  const link = () => {
+    if (params.limit > 0)
+      return `${BASE_URL}categories?offset=${params.offset}&limit=${params.limit}`;
     return `${BASE_URL}categories`;
   };
-  const res = await fetch(link()).then((response) => response.json());
-  return res;
-};
-
-export const getProducts = async (
-  offset: number,
-  limit: number,
-  categoryId: number
-) => {
-  // 2nd
-  const res = await fetch(getProductsLink(offset, limit, categoryId)).then(
-    (response) => response.json()
-  );
-  return res;
-};
-
-const getProductsLink = (offset: number, limit: number, categoryId: number) => {
-  if (categoryId > 0)
-    return `${BASE_URL}products/?categoryId=${categoryId}&offset=${offset}&limit=${limit}`;
-  return `${BASE_URL}products?offset=${offset}&limit=${limit}`;
+  const response = await fetch(link());
+  const data = await response.json();
+  return data as unknown as CategoryProps[];
 };
 
 export const getPagesNumber = async (categoryId: number) => {
@@ -37,11 +43,9 @@ export const getPagesNumber = async (categoryId: number) => {
     if (categoryId > 0) return `${BASE_URL}products/?categoryId=${categoryId}`;
     return `${BASE_URL}products`;
   };
-  let res = 1;
-  await fetch(link())
-    .then((response) => response.json())
-    .then((data) => {
-      res = Math.floor(data.length / 20) + 1;
-    });
-  return res;
+  let pagesNumber = 1;
+  const response = await fetch(link());
+  const data = await response.json();
+  pagesNumber = Math.floor((data.length - 1) / 20) + 1;
+  return pagesNumber;
 };

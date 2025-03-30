@@ -22,10 +22,10 @@ const onImageLoad = () => (imageLoaded.value = true);
         :class="{ 'opacity-100': imageLoaded }"
       />
     </div>
-    <div class="text-[14px] text-center font-[400] flex-[1_0_150px]">
+    <div class="text-14-400 text-center flex-[1_0_150px]">
       {{ props.title }}
     </div>
-    <div class="text-[15px] text-center font-[500]">{{ props.price }} $</div>
+    <div class="text-15-500 text-center">{{ props.price }} $</div>
   </div>
 </template>
 
