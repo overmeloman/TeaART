@@ -9,11 +9,7 @@ const props = defineProps<{
   currentPage: number;
 }>();
 
-<<<<<<< HEAD
-const productsData: Array<ProductProps> = reactive([]);
-=======
 const productsData: ProductProps[] = reactive([]);
->>>>>>> review-2
 
 watch(
   () => props.currentCategoryId,

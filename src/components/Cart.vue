@@ -1,9 +1,5 @@
 <script setup lang="ts">
-<<<<<<< HEAD
-import { reactive } from "vue";
-=======
 import { ref, reactive, computed } from "vue";
->>>>>>> review-2
 import CartItem from "@/components/CartItem.vue";
 import CartOrder from "@/components/CartOrder.vue";
 import type { ProductProps } from "@/types/interfaces";
@@ -33,10 +29,11 @@ const totalSum = computed(() => {
       >
       </CartItem>
     </div>
-<<<<<<< HEAD
-=======
-    <CartOrder :products-number="productsData.length" :total-sum="totalSum" />
->>>>>>> review-2
+    <CartOrder
+      v-if="productsData.length > 0"
+      :products-number="productsData.length"
+      :total-sum="totalSum"
+    />
   </div>
 </template>
 
