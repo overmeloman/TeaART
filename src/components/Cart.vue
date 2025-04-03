@@ -17,8 +17,10 @@ const totalSum = computed(() => {
 </script>
 
 <template>
-  <div class="py-[15px] flex">
-    <div class="flex flex-col gap-[5px] pr-[15px] flex-[2_0] border-r-[2px]">
+  <div class="py-[15px] max-lg:px-[20px] flex flex-col lg:flex-row">
+    <div
+      class="flex flex-col gap-[5px] max-lg:pb-[15px] lg:pr-[15px] flex-[2_0] max-lg:border-b-[2px] lg:border-r-[2px]"
+    >
       <CartItem
         v-for="product in productsData"
         :key="product.id"
@@ -26,8 +28,7 @@ const totalSum = computed(() => {
         :price="product.price"
         :id="product.id"
         :images="product.images"
-      >
-      </CartItem>
+      />
     </div>
     <CartOrder
       v-if="productsData.length > 0"

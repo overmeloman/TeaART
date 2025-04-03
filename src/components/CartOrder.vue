@@ -9,7 +9,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="pl-[15px] flex-[1_0]">
+  <div class="max-lg:pt-[15px] lg:pl-[15px] flex-[1_0]">
     <div
       class="flex flex-col p-[10px] border-[2px] border-black/30 rounded-[5px] gap-[15px]"
     >

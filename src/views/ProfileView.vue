@@ -8,7 +8,7 @@ import Button from "@/components/base/Button.vue";
     <form
       action="https://api.escuelajs.co/api/v1/users/"
       method="post"
-      class="flex flex-col gap-[10px] max-w-[30%]"
+      class="flex flex-col gap-[10px] max-w-[300px]"
     >
       <input
         type="text"

@@ -1,4 +1,9 @@
 /* color palette from <https://github.com/vuejs/theme> */
+@theme {
+  --breakpoint-md: 44rem;
+  --breakpoint-lg: 58rem;
+  --breakpoint-xl: 73rem;
+}
 
 .text-14-400 {
   @apply text-[14px] font-[400];
