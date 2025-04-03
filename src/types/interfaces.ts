@@ -1,9 +1,9 @@
 export interface ProductProps {
   title: string;
   price: number;
-  description: string;
   id: number;
   images: string[];
+  description?: string;
 }
 
 export interface CategoryProps {

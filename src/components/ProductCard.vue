@@ -12,15 +12,15 @@ const onImageLoad = () => (imageLoaded.value = true);
 
 <template>
   <div
-    class="flex flex-col items-center p-[10px] border border-black/30 rounded-[5px] gap-[10px] h-min"
+    class="flex flex-col items-center p-[10px] border-[2px] border-black/30 rounded-[5px] gap-[10px] h-min"
   >
-    <div class="w-full h-[200px] border border-black/70 rounded-[5px]">
+    <div class="w-full h-[200px] border-[2px] border-black/70 rounded-[5px]">
       <img
         v-if="props.images[0]"
         @load="onImageLoad"
         :src="props.images[0]"
         alt="productImage"
-        class="object-cover opacity-0 transition-all duration-300 w-full h-full rounded-[5px]"
+        class="object-cover opacity-0 transition-all duration-300 w-full h-full rounded-[2px]"
         :class="{ 'opacity-100': imageLoaded }"
       />
       <img

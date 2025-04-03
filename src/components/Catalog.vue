@@ -43,7 +43,7 @@ watch(
 
 <template>
   <div class="flex py-[15px]">
-    <div class="flex flex-col gap-[5px] pr-[15px] border-r flex-[1_0]">
+    <div class="flex flex-col gap-[5px] pr-[15px] border-r-[2px] flex-[1_0]">
       <Button
         v-if="categoriesData.length > 0"
         :id="0"
@@ -75,7 +75,7 @@ watch(
           :title="'<-'"
           :type="'button'"
           @click="changePage(currentPage - 1)"
-          class="hover:bg-gray text-15-400 text-center py-[5px] px-[15px] cursor-pointer border border-black/70 rounded-[5px]"
+          class="hover:bg-gray text-15-400 text-center py-[5px] px-[15px] cursor-pointer border-[2px] border-black/70 rounded-[5px]"
         />
         <Button
           v-for="pageId in pagesNumber"
@@ -84,7 +84,7 @@ watch(
           :title="`${pageId}`"
           :type="'button'"
           @click="changePage(pageId)"
-          class="hover:bg-gray text-15-400 text-center py-[5px] px-[15px] cursor-pointer border border-black/70 rounded-[5px]"
+          class="hover:bg-gray text-15-400 text-center py-[5px] px-[15px] cursor-pointer border-[2px] border-black/70 rounded-[5px]"
           :class="{ 'bg-lightgray': pageId == currentPage }"
         />
         <Button
@@ -93,7 +93,7 @@ watch(
           :title="'->'"
           :type="'button'"
           @click="changePage(currentPage + 1)"
-          class="hover:bg-gray text-15-400 text-center py-[5px] px-[15px] cursor-pointer border border-black/70 rounded-[5px]"
+          class="hover:bg-gray text-15-400 text-center py-[5px] px-[15px] cursor-pointer border-[2px] border-black/70 rounded-[5px]"
         />
       </div>
     </div>

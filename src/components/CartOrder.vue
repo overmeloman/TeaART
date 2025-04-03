@@ -11,7 +11,7 @@ const props = defineProps<{
 <template>
   <div class="pl-[15px] flex-[1_0]">
     <div
-      class="flex flex-col p-[10px] border border-black/30 rounded-[5px] gap-[15px]"
+      class="flex flex-col p-[10px] border-[2px] border-black/30 rounded-[5px] gap-[15px]"
     >
       <div class="text-15-500">Your order</div>
       <div class="text-15-400">
