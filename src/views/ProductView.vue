@@ -8,6 +8,9 @@ const props = defineProps<{
   id: number;
 }>();
 
+// checkme
+// сделал как в других местах: создаю массив, хотя здесь только один объект с данными
+// нужно как-то записать сразу в объект, сходу не получилось
 const productsData: ProductProps[] = reactive([]);
 getProduct({
   productId: props.id,
