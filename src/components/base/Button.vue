@@ -1,4 +1,5 @@
 <script setup lang="ts">
+//TODO: ButtonHTMLAttributes (type)
 const props = defineProps<{
   id: number;
   title: string;

@@ -1,13 +1,20 @@
 <script setup lang="ts">
-import type { CategorieProps } from "@/types/interfaces";
+import type { CategoryProps } from "@/types/interfaces";
 
-const props = withDefaults(defineProps<CategorieProps>(), {
+const props = withDefaults(defineProps<CategoryProps>(), {
   id: 0,
   name: "defaultName",
 });
+// TODO: define emit
+const emit = defineEmits<{
+  //action name    payload
+  changeCategory: [id: number];
+}>();
+//Typed emit
 </script>
 
 <template>
+  <!-- TODO: don't forget props. -->
   <button
     @click="$emit('changeCategory', id)"
     class="py-[5px] px-[10px] text-green hover:bg-lightgray text-left text-[15px] font-[400] cursor-pointer"

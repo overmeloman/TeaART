@@ -44,6 +44,7 @@ watch(
 <template>
   <div class="flex py-[15px]">
     <div class="flex flex-col gap-[5px] pr-[15px] border-r-[2px] flex-[1_0]">
+      <!-- TODO: can add Transition -->
       <Button
         v-if="categoriesData.length > 0"
         :id="0"
@@ -68,6 +69,7 @@ watch(
     <div class="flex-[5_0] px-[15px] flex flex-col gap-[15px]">
       <slot :currentCategoryId="currentCategoryId" :currentPage="currentPage" />
 
+      <!-- TODO: move to Pagination component -->
       <div v-if="pagesNumber > 1" class="flex gap-[5px] justify-center">
         <Button
           v-if="currentPage != 1"

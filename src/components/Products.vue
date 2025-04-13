@@ -39,6 +39,7 @@ watch(
   <div
     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[5px]"
   >
+    <!--TODO: v-bind, destructuring -->
     <ProductCard
       v-for="product in productsData"
       :key="product.id"

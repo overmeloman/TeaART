@@ -11,6 +11,9 @@ getProducts({ offset: 0, limit: 5, categoryId: 0 }).then((data) =>
   data.forEach((obj) => productsData.push(obj))
 );
 
+// TODO: await?
+// const products = await getProducts({ offset: 0, limit: 5, categoryId: 0 });
+
 const totalSum = computed(() => {
   return productsData.reduce((sum, product) => sum + product.price, 0);
 });
@@ -21,6 +24,7 @@ const totalSum = computed(() => {
     <div
       class="flex flex-col gap-[5px] max-lg:pb-[15px] lg:pr-[15px] flex-[2_0] max-lg:border-b-[2px] lg:border-r-[2px]"
     >
+      <!--TODO: v-bind, destructuring -->
       <CartItem
         v-for="product in productsData"
         :key="product.id"

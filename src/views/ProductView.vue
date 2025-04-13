@@ -11,6 +11,10 @@ const props = defineProps<{
 // checkme
 // сделал как в других местах: создаю массив, хотя здесь только один объект с данными
 // нужно как-то записать сразу в объект, сходу не получилось
+
+//Are you sure about response type?
+//Usually in queries like 'get something by id' you will get one object
+// but in this case you definine response type as array
 const productsData: ProductProps[] = reactive([]);
 getProduct({
   productId: props.id,
