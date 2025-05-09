@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import type { ProductProps } from "@/types/interfaces";
+import type { ProductProps } from "@/types/propsTypes";
 
 const props = defineProps<ProductProps>();
 

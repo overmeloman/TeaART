@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, reactive, computed, watch } from "vue";
 import ProductCard from "@/components/ProductCard.vue";
-import type { ProductProps } from "@/types/interfaces";
+import type { ProductProps } from "@/types/propsTypes";
 import { getProducts } from "@/queries/queries";
 
 const props = defineProps<{
@@ -15,7 +15,7 @@ watch(
   () => props.currentCategoryId,
   async (newCategoryId) => {
     productsData.length = 0;
-    getProducts({ offset: 0, limit: 12, categoryId: newCategoryId }).then(
+    getProducts({ offset: 0, limit: 20, categoryId: newCategoryId }).then(
       (data) => data.forEach((obj) => productsData.push(obj))
     );
   },
@@ -27,8 +27,8 @@ watch(
   async (newPageId) => {
     productsData.length = 0;
     getProducts({
-      offset: (newPageId - 1) * 12,
-      limit: 12,
+      offset: (newPageId - 1) * 20,
+      limit: 20,
       categoryId: props.currentCategoryId,
     }).then((data) => data.forEach((obj) => productsData.push(obj)));
   }
@@ -37,16 +37,12 @@ watch(
 
 <template>
   <div
-    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[5px]"
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[5px] h-full"
   >
-    <!--TODO: v-bind, destructuring -->
     <ProductCard
       v-for="product in productsData"
+      v-bind="product"
       :key="product.id"
-      :title="product.title"
-      :price="product.price"
-      :id="product.id"
-      :images="product.images"
     >
     </ProductCard>
   </div>

@@ -19,7 +19,6 @@ const props = defineProps<{
       </div>
       <div class="text-15-400">Total Sum: {{ props.totalSum }}</div>
       <Button
-        :id="0"
         :title="'ORDER'"
         :type="'button'"
         class="bg-green hover:bg-darkgreen rounded-[5px] text-15-400 text-center text-white py-[10px] px-[15px] w-[100%] cursor-pointer"

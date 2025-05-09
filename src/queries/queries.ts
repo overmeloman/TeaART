@@ -1,4 +1,4 @@
-import type { ProductProps, CategoryProps } from "@/types/interfaces";
+import type { ProductProps, CategoryProps } from "@/types/propsTypes";
 
 const BASE_URL = "https://api.escuelajs.co/api/v1/";
 

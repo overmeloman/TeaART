@@ -1,7 +1,8 @@
 <script setup lang="ts">
-//TODO: ButtonHTMLAttributes (type)
+// import type { ButtonHTMLAttributes } from "vue";
+// interface IButton extends /* @vue-ignore */ ButtonHTMLAttributes {
+
 const props = defineProps<{
-  id: number;
   title: string;
   type: "submit" | "reset" | "button";
 }>();

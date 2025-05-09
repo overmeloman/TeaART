@@ -35,7 +35,6 @@ import Button from "@/components/base/Button.vue";
         class="p-[10px] border rounded-[5px]"
       />
       <Button
-        :id="1"
         :title="'Submit'"
         :type="'submit'"
         class="bg-green hover:bg-darkgreen rounded-[5px] text-15-400 text-center text-white py-[10px] px-[15px] w-[100%] cursor-pointer"
