@@ -22,6 +22,7 @@ const onImageLoad = () => (imageLoaded.value = true);
   <div class="flex flex-col gap-[15px] py-[15px]">
     <div class="">id {{ props.id }}</div>
     <div class="text-22-700">{{ productsData?.title }}</div>
+    <div class="text-20-500">{{ productsData?.category.name }}</div>
     <div class="w-[300px] h-[300px] border border-black/70 rounded-[5px]">
       <img
         v-if="productsData?.images[0]"

@@ -39,13 +39,22 @@ watch(
   <div
     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[5px] h-full"
   >
-    <ProductCard
-      v-for="product in productsData"
-      v-bind="product"
-      :key="product.id"
-    >
-    </ProductCard>
+    <TransitionGroup name="products">
+      <ProductCard
+        v-for="product in productsData"
+        v-bind="product"
+        :key="product.id"
+      />
+    </TransitionGroup>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.products-enter-from {
+  opacity: 0;
+  transform: translateX(15px);
+}
+.products-enter-active {
+  transition: all 0.5s ease;
+}
+</style>

@@ -4,6 +4,7 @@ export interface ProductProps {
   id: number;
   images: string[];
   description?: string;
+  category: CategoryProps;
 }
 
 export interface CategoryProps {

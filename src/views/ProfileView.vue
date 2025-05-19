@@ -4,10 +4,11 @@ import Button from "@/components/base/Button.vue";
 
 <template>
   <div class="py-[15px] flex flex-col gap-[15px]">
-    <div class="text-20-500">Registration</div>
+    <h2 class="text-20-500">Registration</h2>
     <form
       action="https://api.escuelajs.co/api/v1/users/"
       method="post"
+      target="_blank"
       class="flex flex-col gap-[10px] max-w-[300px]"
     >
       <input

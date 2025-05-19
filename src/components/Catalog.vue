@@ -45,7 +45,6 @@ watch(
 <template>
   <div class="flex py-[15px]">
     <div class="flex flex-col gap-[5px] pr-[15px] border-r-[2px] flex-[1_0]">
-      <!-- TODO: can add Transition -->
       <Button
         v-if="categoriesData.length > 0"
         :title="'RESET'"
@@ -53,16 +52,17 @@ watch(
         @click="reset()"
         class="py-[5px] px-[10px] hover:bg-gray transition-all duration-300 ease-[cubic-bezier(.2,.8,.2,.8)] rounded-[5px] text-15-500 text-center cursor-pointer"
       />
-
-      <Button
-        v-for="category in categoriesData"
-        :key="category.id"
-        :title="category.name"
-        :type="'button'"
-        @click="changeCategory(category.id)"
-        class="py-[5px] px-[10px] text-green hover:bg-gray transition-all duration-300 ease-[cubic-bezier(.2,.8,.2,.8)] text-15-500 text-left cursor-pointer rounded-[5px]"
-        :class="{ 'bg-lightgray': category.id == currentCategoryId }"
-      />
+      <TransitionGroup name="categories">
+        <Button
+          v-for="category in categoriesData"
+          :key="category.id"
+          :title="category.name"
+          :type="'button'"
+          @click="changeCategory(category.id)"
+          class="py-[5px] px-[10px] text-green hover:bg-gray transition-all duration-300 ease-[cubic-bezier(.2,.8,.2,.8)] text-15-500 text-left cursor-pointer rounded-[5px]"
+          :class="{ 'bg-lightgray': category.id == currentCategoryId }"
+        />
+      </TransitionGroup>
     </div>
 
     <div class="flex-[5_0] px-[15px] flex flex-col gap-[15px] min-h-[100vh]">
@@ -77,4 +77,11 @@ watch(
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.categories-enter-from {
+  opacity: 0;
+}
+.categories-enter-active {
+  transition: all 0.5s ease;
+}
+</style>
