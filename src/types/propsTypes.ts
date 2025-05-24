@@ -7,6 +7,8 @@ export interface ProductProps {
   category: CategoryProps;
 }
 
+// export type ProductPropsList = Array<ProductProps>;
+
 export interface CategoryProps {
   id: number;
   name: string;

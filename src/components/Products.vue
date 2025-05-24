@@ -2,37 +2,45 @@
 import { ref, reactive, computed, watch } from "vue";
 import ProductCard from "@/components/ProductCard.vue";
 import type { ProductProps } from "@/types/propsTypes";
-import { getProducts } from "@/queries/queries";
+import { getProductsQuery } from "@/queries/queriesTanStack";
 
 const props = defineProps<{
   currentCategoryId: number;
   currentPage: number;
 }>();
 
-const productsData: ProductProps[] = reactive([]);
+// const productsData: ProductPropsList = reactive([]);
 
-watch(
-  () => props.currentCategoryId,
-  async (newCategoryId) => {
-    productsData.length = 0;
-    getProducts({ offset: 0, limit: 20, categoryId: newCategoryId }).then(
-      (data) => data.forEach((obj) => productsData.push(obj))
-    );
-  },
-  { immediate: true }
-);
+const productsQueryParams = computed(() => {
+  return {
+    categoryId: props.currentCategoryId,
+    offset: (props.currentPage - 1) * 20,
+    limit: 20,
+  };
+});
+const productsQuery = getProductsQuery(productsQueryParams);
+const productsData = productsQuery.data;
 
-watch(
-  () => props.currentPage,
-  async (newPageId) => {
-    productsData.length = 0;
-    getProducts({
-      offset: (newPageId - 1) * 20,
-      limit: 20,
-      categoryId: props.currentCategoryId,
-    }).then((data) => data.forEach((obj) => productsData.push(obj)));
-  }
-);
+// watch(
+//   () => productsQueryParams.categoryId,
+//   async () => {
+//     productsQuery = getProductsQuery(productsQueryParams);
+//     productsData = productsQuery.data;
+//   }
+//   // { immediate: true }
+// );
+
+// watch(
+//   () => props.currentPage,
+//   async (newPageId) => {
+//     productsData.length = 0;
+//     getProducts({
+//       offset: (newPageId - 1) * 20,
+//       limit: 20,
+//       categoryId: props.currentCategoryId,
+//     }).then((data) => data.forEach((obj) => productsData.push(obj)));
+//   }
+// );
 </script>
 
 <template>

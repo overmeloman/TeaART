@@ -3,16 +3,17 @@ import { ref, reactive, computed } from "vue";
 import CartItem from "@/components/CartItem.vue";
 import CartOrder from "@/components/CartOrder.vue";
 import type { ProductProps } from "@/types/propsTypes";
-import { getProducts } from "@/queries/queries";
+import { getProductsQuery } from "@/queries/queriesTanStack";
 
-const productsData: ProductProps[] = reactive([]);
+const productsQueryParams = ref({ categoryId: 0, offset: 0, limit: 5 });
+const productsQuery = getProductsQuery(productsQueryParams);
+const productsData = productsQuery.data;
 
-getProducts({ offset: 0, limit: 5, categoryId: 0 }).then((data) =>
-  data.forEach((obj) => productsData.push(obj))
-);
-
+// ???
 const totalSum = computed(() => {
-  return productsData.reduce((sum, product) => sum + product.price, 0);
+  if (productsData.value != undefined)
+    return productsData.value.reduce((sum, product) => sum + product.price, 0);
+  return 0;
 });
 </script>
 
@@ -27,8 +28,9 @@ const totalSum = computed(() => {
         :key="product.id"
       />
     </div>
+    <!-- ??? -->
     <CartOrder
-      v-if="productsData.length > 0"
+      v-if="productsData != undefined"
       :products-number="productsData.length"
       :total-sum="totalSum"
     />

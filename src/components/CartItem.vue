@@ -8,12 +8,12 @@ const props = defineProps<ProductProps>();
 
 <template>
   <div
-    class="flex items-center p-[10px] border-[2px] border-black/30 rounded-[5px] gap-[15px]"
+    class="flex items-center justify-between p-[10px] border-[2px] border-black/30 rounded-[5px] gap-[15px]"
   >
-    <div class="h-full w-[60px] border-[2px] border-black/70 rounded-[5px]">
+    <div class="h-[60px] w-[60px] border-[2px] border-black/70 rounded-[5px]">
       <Image :src="props.images[0]" :alt="props.category.name" />
     </div>
-    <div class="text-14-400 text-center flex-[1_0_150px]">
+    <div class="text-14-400 text-center">
       {{ props.title }}
     </div>
     <div class="text-15-500 text-center">{{ props.price }} $</div>

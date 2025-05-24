@@ -17,7 +17,7 @@ const props = defineProps<{
       <div class="text-15-400">
         Products in cart: {{ props.productsNumber }}
       </div>
-      <div class="text-15-400">Total Sum: {{ props.totalSum }}</div>
+      <div class="text-15-400">Total Sum: {{ props.totalSum }} $</div>
       <Button
         :title="'ORDER'"
         :type="'button'"
