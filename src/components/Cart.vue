@@ -1,15 +1,13 @@
 <script setup lang="ts">
-import { ref, reactive, computed } from "vue";
+import { ref, computed } from "vue";
 import CartItem from "@/components/CartItem.vue";
 import CartOrder from "@/components/CartOrder.vue";
-import type { ProductProps } from "@/types/propsTypes";
 import { getProductsQuery } from "@/queries/queriesTanStack";
 
-const productsQueryParams = ref({ categoryId: 0, offset: 0, limit: 5 });
-const productsQuery = getProductsQuery(productsQueryParams);
-const productsData = productsQuery.data;
+const { data: productsData } = getProductsQuery(
+  ref({ categoryId: 0, offset: 0, limit: 5 })
+);
 
-// ???
 const totalSum = computed(() => {
   if (productsData.value != undefined)
     return productsData.value.reduce((sum, product) => sum + product.price, 0);
@@ -28,7 +26,6 @@ const totalSum = computed(() => {
         :key="product.id"
       />
     </div>
-    <!-- ??? -->
     <CartOrder
       v-if="productsData != undefined"
       :products-number="productsData.length"

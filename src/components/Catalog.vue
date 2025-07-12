@@ -1,22 +1,26 @@
 <script setup lang="ts">
-import { ref, reactive, watch } from "vue";
+import { computed, reactive } from "vue";
 import Button from "@/components/base/Button.vue";
 import Pagination from "@/components/Pagination.vue";
-import type { CategoryProps } from "@/types/propsTypes";
-import { getCategoriesQuery, getPagesNumber } from "@/queries/queriesTanStack";
+import {
+  getCategoriesQuery,
+  getPagesNumberQuery,
+} from "@/queries/queriesTanStack";
 
-// const categoriesData: Array<CategoryProps> = reactive([]);
+const filter = reactive({ currentCategoryId: 0, currentPage: 1 });
 
-const categoriesQueryParams = { offset: 0, limit: 5 };
-const categoriesQuery = getCategoriesQuery(categoriesQueryParams);
-const categoriesData = categoriesQuery.data;
-
-const filter = reactive({ currentCategoryId: 0, currentPage: 0 });
-
-const pagesNumber = ref(1);
+const { data: categoriesData } = getCategoriesQuery({ offset: 0, limit: 5 });
+const { data: pagesNumber } = getPagesNumberQuery(
+  computed(() => {
+    return {
+      categoryId: filter.currentCategoryId,
+    };
+  })
+);
 
 const changeCategory = (id: number) => {
   filter.currentCategoryId = id;
+  filter.currentPage = 1;
 };
 
 const changePage = (id: number) => {
@@ -27,17 +31,6 @@ const reset = () => {
   changeCategory(0);
   changePage(1);
 };
-
-watch(
-  () => filter.currentCategoryId,
-  async (newCategoryId) => {
-    filter.currentPage = 1;
-    getPagesNumber({ categoryId: newCategoryId }).then((newPagesNumber) => {
-      pagesNumber.value = newPagesNumber;
-    });
-  },
-  { immediate: true }
-);
 </script>
 
 <template>
@@ -66,6 +59,7 @@ watch(
       <slot v-bind="filter" />
 
       <Pagination
+        v-if="pagesNumber"
         :currentPage="filter.currentPage"
         :pagesNumber="pagesNumber"
         @change-page="changePage"

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref, reactive, watch } from "vue";
 import Button from "@/components/base/Button.vue";
 
 const props = defineProps<{

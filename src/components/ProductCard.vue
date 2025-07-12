@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import type { ProductProps } from "@/types/propsTypes";
 import Button from "@/components/base/Button.vue";
 import Image from "@/components/base/Image.vue";

@@ -1,15 +1,12 @@
 <script setup lang="ts">
-import { ref, reactive, computed, watch } from "vue";
+import { computed } from "vue";
 import ProductCard from "@/components/ProductCard.vue";
-import type { ProductProps } from "@/types/propsTypes";
 import { getProductsQuery } from "@/queries/queriesTanStack";
 
 const props = defineProps<{
   currentCategoryId: number;
   currentPage: number;
 }>();
-
-// const productsData: ProductPropsList = reactive([]);
 
 const productsQueryParams = computed(() => {
   return {
@@ -18,29 +15,7 @@ const productsQueryParams = computed(() => {
     limit: 20,
   };
 });
-const productsQuery = getProductsQuery(productsQueryParams);
-const productsData = productsQuery.data;
-
-// watch(
-//   () => productsQueryParams.categoryId,
-//   async () => {
-//     productsQuery = getProductsQuery(productsQueryParams);
-//     productsData = productsQuery.data;
-//   }
-//   // { immediate: true }
-// );
-
-// watch(
-//   () => props.currentPage,
-//   async (newPageId) => {
-//     productsData.length = 0;
-//     getProducts({
-//       offset: (newPageId - 1) * 20,
-//       limit: 20,
-//       categoryId: props.currentCategoryId,
-//     }).then((data) => data.forEach((obj) => productsData.push(obj)));
-//   }
-// );
+const { data: productsData } = getProductsQuery(productsQueryParams);
 </script>
 
 <template>
